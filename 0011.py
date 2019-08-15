@@ -4,6 +4,7 @@ class Solution(object):
         :type height: List[int]
         :rtype: int
         """
+        # Method: two pointers, Time = O(n), Space = O(1)
         left, right = 0, len(h)-1
         res = 0
         while left < right:
