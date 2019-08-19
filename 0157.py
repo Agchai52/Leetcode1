@@ -12,6 +12,19 @@ read4(buf) # read4 returns 4. Now buf = ['a','b','c','d'], fp points to 'e'
 read4(buf) # read4 returns 4. Now buf = ['e','f','g','h'], fp points to 'i'
 read4(buf) # read4 returns 3. Now buf = ['i','j','k',...], fp points to end of file
 """
+def read4(buf):
+    global file_content
+    i = 0
+    while i < len(file_content) and i < 4:
+        buf[i] = file_content[i]
+        i += 1
+ 
+    if len(file_content) > 4:
+        file_content = file_content[4:]
+    else:
+        file_content = ""
+    return i
+
 class Solution(object):
     def read(self, buf, n):
         """
@@ -28,3 +41,8 @@ class Solution(object):
      
         return min(res, n)
 
+if __name__ == '__main__':
+    global file_content
+    buf = ['' for _ in xrange(100)]
+    file_content = 'aaa'
+    print(buf[:Solution().read(buf, 9)])
