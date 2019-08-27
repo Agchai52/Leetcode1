@@ -13,7 +13,7 @@ class Solution(object):
         nums.sort()
         res = []
         for i in range(n):
-            for j in range(i-1, -1, -1):
+            for j in range(i): #(i-1, -1, -1):
                 if nums[i] % nums[j] == 0 and dp[i] < dp[j] + 1:
                     dp[i] = dp[j] + 1
                     parent[i] = j
