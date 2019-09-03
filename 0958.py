@@ -11,11 +11,13 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
+    # Method 1:
         '''
         1. get height of tree
         2. befor last level, all full
         3. at last level, no None before end
         4. not root?
+        '''
         '''
         if not root: return False
         height = self.getHeight(root)
@@ -50,7 +52,19 @@ class Solution(object):
                 return False
             i -= 1
         return True
+    '''
 
+        # Method 2: BFS
+        que = [(root, 1)]
+        i = 0
+        while i < len(que):
+            node, v = que[i]
+            i += 1
+            if node:
+                que.append((node.left, 2*v))
+                que.append((node.right, 2*v+1))
+        return que[-1][1] == len(que)
+        
 class TreeNode(object):
     def __init__(self, value):
         self.val = value
