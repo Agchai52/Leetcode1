@@ -34,3 +34,8 @@ class Solution(object):
                     right = mid - 1
             i += 1
         return res
+        '''
+        # Method 2:
+        set1, set2 = set(nums1), set(nums2)
+        return list(set1.intersect(set2))
+        '''
